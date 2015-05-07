@@ -13,7 +13,18 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 @EnableSwagger2
 public class SpringfoxConfig {
-     
+    
+    @Bean
+    public Docket configSpringfoxDocket_all() {       
+        return new Docket(DocumentationType.SWAGGER_2)
+            .produces(Sets.newHashSet("application/json")) 
+            .consumes(Sets.newHashSet("application/json")) 
+            .protocols(Sets.newHashSet("http", "https")) 
+            .forCodeGeneration(true) 
+            .select().paths(regex(".*")) 
+            .build();
+    }
+
     @Bean
     public Docket configSpringfoxDocket_foo() {       
         return new Docket(DocumentationType.SWAGGER_2)
