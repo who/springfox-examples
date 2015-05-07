@@ -26,27 +26,27 @@ public class SpringfoxConfig {
     }
 
     @Bean
-    public Docket configSpringfoxDocket_foo() {       
+    public Docket configSpringfoxDocket_withDefaultResponses() {       
         return new Docket(DocumentationType.SWAGGER_2)
-            .groupName("foo")
+            .groupName("withDefaultResponses")
             .produces(Sets.newHashSet("application/json")) 
             .consumes(Sets.newHashSet("application/json")) 
             .protocols(Sets.newHashSet("http", "https")) 
             .forCodeGeneration(true) 
-            .select().paths(regex(".*foo.*")) 
+            .select().paths(regex(".*withDefaultResponses.*")) 
             .build();
     }
     
     @Bean
-    public Docket configSpringfoxDocket_bar() {       
+    public Docket configSpringfoxDocket_withoutDefaultResponses() {       
         return new Docket(DocumentationType.SWAGGER_2)
-            .groupName("bar")
+            .groupName("withoutDefaultResponses")
             .produces(Sets.newHashSet("application/json")) 
             .consumes(Sets.newHashSet("application/json")) 
             .protocols(Sets.newHashSet("http", "https")) 
             .useDefaultResponseMessages(false)
             .forCodeGeneration(true) 
-            .select().paths(regex(".*bar.*")) 
+            .select().paths(regex(".*withoutDefaultResponses.*")) 
             .build();
     }
 }

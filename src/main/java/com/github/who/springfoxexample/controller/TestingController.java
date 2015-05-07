@@ -7,22 +7,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.who.springfoxexample.model.SampleModel;
-import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 
 @RestController
 @RequestMapping(value = "/testing")
 public class TestingController {
 
-    @RequestMapping(value = "/foo", method = RequestMethod.POST, produces = "application/json")
-    public AnotherSampleModel foo(@ApiParam(value = "ComplexRequest") @RequestBody(required = true) SampleModel request) {
+    @RequestMapping(value = "/withDefaultResponses", method = RequestMethod.POST, produces = "application/json")
+    @ApiResponse(code = 200, message = "success", response = AnotherSampleModel.class)
+    public Object withDefaultResponses(@RequestBody(required = true) SampleModel request) {
         AnotherSampleModel model = new AnotherSampleModel();
         model.setSampleValue(request.getSampleValue());
         return model;
     }
     
-    @RequestMapping(value = "/bar", method = RequestMethod.POST, produces = "application/json")
-    public AnotherSampleModel bar(@ApiParam(value = "ComplexRequest") @RequestBody(required = true) SampleModel request) {
+    @RequestMapping(value = "/withoutDefaultResponses", method = RequestMethod.POST, produces = "application/json")
+    @ApiResponse(code = 200, message = "success", response = AnotherSampleModel.class)
+    public Object withoutDefaultResponses(@RequestBody(required = true) SampleModel request) {
         AnotherSampleModel model = new AnotherSampleModel();
         model.setSampleValue(request.getSampleValue());
         return model;
