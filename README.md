@@ -10,7 +10,9 @@ mvn exec:java;
 ```
 
 After executing the above, in a new terminal window:
+
 `curl http://localhost:8081/springfoxexample/v2/api-docs?group=withoutDefaultResponses`
+
 `curl http://localhost:8081/springfoxexample/v2/api-docs?group=withDefaultResponses`
 
 
